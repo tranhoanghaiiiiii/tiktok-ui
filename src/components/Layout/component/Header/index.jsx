@@ -6,6 +6,7 @@ import { faMagnifyingGlass, faSpinner, faXmarkCircle } from '@fortawesome/free-s
 import { useEffect, useState } from 'react';
 import { Wrapper as PopperWrapper } from '../../../Popper';
 import AccountItem from '../../../AccountItem';
+import Button from '../../../Button';
 const cx = classNames.bind(styles);
 
 function Header() {
@@ -69,7 +70,10 @@ function Header() {
               </button>
             </div>
           </Tippy>
-          <div className={cx("actions")}></div>
+          <div className={cx("actions")}>
+            <Button primary rounded>Log in</Button>
+            <Button text>Upload</Button>
+          </div>
         </div>
       </header>
     );
