@@ -13,6 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 var(--default-layout-horizontal-spacer);
 }
 
 .logo_img {
@@ -107,9 +108,5 @@
     margin-left: 28px;
     background: transparent;
     padding: 4px 8px;
-}
-
-//menu
-.menu-items {
-    width: 224px;
+    cursor: pointer;
 }

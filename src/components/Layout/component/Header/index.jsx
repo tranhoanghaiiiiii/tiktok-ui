@@ -27,17 +27,17 @@ const MENU_ITEMS = [
       children: {
           title: 'Language',
           data: [
-              {
-                  type: 'language',
-                  code: 'en',
-                  title: 'English',
-              },
-              {
-                  type: 'language',
-                  code: 'vi',
-                  title: 'Tiếng Việt',
-              },
-          ],
+            {
+                type: 'language',
+                code: 'en',
+                title: 'English',
+            },
+            {
+                type: 'language',
+                code: 'vi',
+                title: 'Tiếng Việt',
+            },
+        ],
       },
   },
   {
@@ -109,7 +109,7 @@ function Header() {
         </Tippy>
         <div className={cx("actions")}>
           <Button text>Upload</Button>
-          <Button primary rounded>
+          <Button primary >
             Log in
           </Button>
           <Menu items ={MENU_ITEMS}>
