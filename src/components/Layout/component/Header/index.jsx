@@ -15,45 +15,46 @@ import {
   faUser,
   faCoins,
   faGear,
-  faSignOut
+  faSignOut,
+  faMessage,
+  faInbox,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { Wrapper as PopperWrapper } from "../../../Popper";
 import AccountItem from "../../../AccountItem";
 import Button from "../../../Button";
 import Menu from "../../../Popper/Menu";
-import 'tippy.js/dist/tippy.css'
+import "tippy.js/dist/tippy.css";
 const cx = classNames.bind(styles);
-
 
 const MENU_ITEMS = [
   {
-      icon: <FontAwesomeIcon icon={faEarthAsia} />,
-      title: 'English',
-      children: {
-          title: 'Language',
-          data: [
-            {
-                type: 'language',
-                code: 'en',
-                title: 'English',
-            },
-            {
-                type: 'language',
-                code: 'vi',
-                title: 'Tiếng Việt',
-            },
-        ],
-      },
+    icon: <FontAwesomeIcon icon={faEarthAsia} />,
+    title: "English",
+    children: {
+      title: "Language",
+      data: [
+        {
+          type: "language",
+          code: "en",
+          title: "English",
+        },
+        {
+          type: "language",
+          code: "vi",
+          title: "Tiếng Việt",
+        },
+      ],
+    },
   },
   {
-      icon: <FontAwesomeIcon icon={faCircleQuestion} />,
-      title: 'Feedback and help',
-      to: '/feedback',
+    icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+    title: "Feedback and help",
+    to: "/feedback",
   },
   {
-      icon: <FontAwesomeIcon icon={faKeyboard} />,
-      title: 'Keyboard shortcuts',
+    icon: <FontAwesomeIcon icon={faKeyboard} />,
+    title: "Keyboard shortcuts",
   },
 ];
 function Header() {
@@ -65,33 +66,31 @@ function Header() {
     }, 0);
   }, []);
 
-  const handleMenuChange =(menuItem)=>{
-
-  }
+  const handleMenuChange = (menuItem) => {};
   const userMenu = [
     {
-        icon: <FontAwesomeIcon icon={faUser} />,
-        title: 'View profile',
-        to: '/@hoaa',
+      icon: <FontAwesomeIcon icon={faUser} />,
+      title: "View profile",
+      to: "/@hoaa",
     },
     {
-        icon: <FontAwesomeIcon icon={faCoins} />,
-        title: 'Get coins',
-        to: '/coin',
+      icon: <FontAwesomeIcon icon={faCoins} />,
+      title: "Get coins",
+      to: "/coin",
     },
     {
-        icon: <FontAwesomeIcon icon={faGear} />,
-        title: 'Settings',
-        to: '/settings',
+      icon: <FontAwesomeIcon icon={faGear} />,
+      title: "Settings",
+      to: "/settings",
     },
     ...MENU_ITEMS,
     {
-        icon: <FontAwesomeIcon icon={faSignOut} />,
-        title: 'Log out',
-        to: '/logout',
-        separate: true,
+      icon: <FontAwesomeIcon icon={faSignOut} />,
+      title: "Log out",
+      to: "/logout",
+      separate: true,
     },
-];
+  ];
   return (
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
@@ -143,38 +142,49 @@ function Header() {
           </div>
         </HeadlessTippy>
         <div className={cx("actions")}>
-        {currentUser ? (
-          <>
-          <Tippy delay={[0, 50]} content="Upload video" placement="bottom">
-              <button className={cx('action-btn')}>
+          {currentUser ? (
+            <>
+              <Tippy delay={[0, 50]} content="Upload video" placement="bottom">
+                <button className={cx("action-btn")}>
                   <FontAwesomeIcon icon={faCloudUpload}></FontAwesomeIcon>
-              </button>
-          </Tippy>
-          </>
-        ):(
-          <>
-          <Button text>Upload</Button>
-          <Button primary >
-            Log in
-          </Button>
-          </>
-        )}
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 50]} content="Message" placement="bottom">
+                <button className={cx("action-btn")}>
+                  <FontAwesomeIcon icon={faMessage}></FontAwesomeIcon>
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
+                <button className={cx("action-btn")}>
+                  <FontAwesomeIcon icon={faInbox}></FontAwesomeIcon>
+                  <span className={cx('badge')}>12</span>
+                </button>
+              </Tippy>
+            </>
+          ) : (
+            <>
+              <Button text>Upload</Button>
+              <Button primary>Log in</Button>
+            </>
+          )}
 
-<Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
-                        {currentUser ? (
-                            <img
-                                className={cx('user-avatar')}
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIGZWT1XLsCot3KRq23VJiapSoQ3ZMJk89Mg&s"
-                                alt="Nguyen Van A"
-                            />
-                        ) : (
-                            <button className={cx('more-btn')}>
-                                <FontAwesomeIcon icon={faEllipsisVertical} />
-                            </button>
-                        )}
-                    </Menu>
+          <Menu
+            items={currentUser ? userMenu : MENU_ITEMS}
+            onChange={handleMenuChange}
+          >
+            {currentUser ? (
+              <img
+                className={cx("user-avatar")}
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIGZWT1XLsCot3KRq23VJiapSoQ3ZMJk89Mg&s"
+                alt="Nguyen Van A"
+              />
+            ) : (
+              <button className={cx("more-btn")}>
+                <FontAwesomeIcon icon={faEllipsisVertical} />
+              </button>
+            )}
+          </Menu>
         </div>
-        
       </div>
     </header>
   );
