@@ -4,6 +4,7 @@ import styles from "./Search.module.scss";
 import HeadlessTippy from "@tippyjs/react/headless"; // different import path!
 import { Wrapper as PopperWrapper } from "../../../Popper";
 import AccountItem from "../../../AccountItem";
+import * as searchServices from "../../../../apiServices/searchServices"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMagnifyingGlass,
@@ -18,6 +19,8 @@ function Search() {
   const [searchResult, setSearchResult] = useState([]);
   const [showResult, setShowResult] = useState(true);
   const [loading, setLoading] = useState(false);
+
+
   const debounced = useDebounce(searchValue,500)
 
   const inputRef = useRef();
@@ -26,20 +29,14 @@ function Search() {
       setSearchResult([])
       return;
     }
-    setLoading(true);
-    fetch(
-      `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-        debounced
-      )}&type=less`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setSearchResult(res.data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+    const fetchApi = async ()=>{
+      setLoading(true)
+      const result = await searchServices.search(debounced);
+      setSearchResult(result)
+      setLoading(false)
+    }
+    fetchApi()
+    
   }, [debounced]);
 
   const handleClear = () => {
@@ -50,7 +47,7 @@ function Search() {
     setShowResult(false);
   };
 
-  console.log(searchValue);
+  // console.log(searchValue);
   return (
     <>
       <HeadlessTippy
