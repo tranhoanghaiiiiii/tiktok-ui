@@ -1,5 +1,6 @@
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
+import routesConfig from '../../../../config/routes'
 import Tippy from "@tippyjs/react"; // different import path!
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -21,6 +22,7 @@ import Button from "../../../Button";
 import Menu from "../../../Popper/Menu";
 import "tippy.js/dist/tippy.css";
 import Search from "../Search";
+import { Link } from "react-router-dom";
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
@@ -39,7 +41,7 @@ const MENU_ITEMS = [
           type: "language",
           code: "vi",
           title: "Tiếng Việt",
-        },
+        }
       ],
     },
   },
@@ -84,10 +86,7 @@ function Header() {
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
         <div className={cx("logo")}>
-          <a
-            href="https://classic.vn/wp-content/uploads/2023/08/1200px-TikTok_logo.svg.png"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link to={routesConfig.home}
           >
             <img
               src="https://classic.vn/wp-content/uploads/2023/08/1200px-TikTok_logo.svg.png"
@@ -95,7 +94,7 @@ function Header() {
               width="200"
               className={cx("logo_img")}
             />
-          </a>
+          </Link>
         </div>
 
         {/* Search */}
