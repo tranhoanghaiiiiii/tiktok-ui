@@ -2,16 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./Search.module.scss";
 import HeadlessTippy from "@tippyjs/react/headless"; // different import path!
-import { Wrapper as PopperWrapper } from "../../../Popper";
-import AccountItem from "../../../AccountItem";
-import * as searchServices from "../../../../apiServices/searchServices"
+import { Wrapper as PopperWrapper } from "../../../components/Popper";
+import AccountItem from "../../../components/AccountItem";
+import * as searchServices from "../../../service/searchService"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMagnifyingGlass,
   faSpinner,
   faXmarkCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import { useDebounce } from "../../../../hooks";
+import { useDebounce } from "../../../hooks";
 
 const cx = classNames.bind(styles);
 function Search() {

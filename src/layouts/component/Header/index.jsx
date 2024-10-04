@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
-import routesConfig from '../../../../config/routes'
+import config from '../../../config'
 import Tippy from "@tippyjs/react"; // different import path!
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,8 +18,8 @@ import {
   faInbox,
 } from "@fortawesome/free-solid-svg-icons";
 
-import Button from "../../../Button";
-import Menu from "../../../Popper/Menu";
+import Button from "../../../components/Button";
+import Menu from "../../../components/Popper/Menu";
 import "tippy.js/dist/tippy.css";
 import Search from "../Search";
 import { Link } from "react-router-dom";
@@ -86,7 +86,7 @@ function Header() {
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
         <div className={cx("logo")}>
-          <Link to={routesConfig.home}
+          <Link to={config.routes.home}
           >
             <img
               src="https://classic.vn/wp-content/uploads/2023/08/1200px-TikTok_logo.svg.png"
