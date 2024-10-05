@@ -9,6 +9,6 @@ function MenuItem({data,onClick}) {
 }
 MenuItem.prototype={
     data:PropTypes.object.isRequired,
-    onClick:PropTypes.func
+    onClick:PropTypes.func 
 }
 export default MenuItem;
